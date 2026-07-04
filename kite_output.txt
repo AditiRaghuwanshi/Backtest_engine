@@ -1,0 +1,1183 @@
+
+======================================================================
+Logged in as: Sampath Thammanaveni (FA8929)
+
+======================================================================
+1. INSTRUMENTS — GET /instruments (showing first 5 of NSE)
+
+======================================================================
+Total NSE instruments returned: 9904
+[
+  {
+    "instrument_token": 256265,
+    "exchange_token": "1001",
+    "tradingsymbol": "NIFTY 50",
+    "name": "NIFTY 50",
+    "last_price": 0.0,
+    "expiry": "",
+    "strike": 0.0,
+    "tick_size": 0.0,
+    "lot_size": 0,
+    "instrument_type": "EQ",
+    "segment": "INDICES",
+    "exchange": "NSE"
+  },
+  {
+    "instrument_token": 256777,
+    "exchange_token": "1003",
+    "tradingsymbol": "NIFTY MIDCAP 100",
+    "name": "NIFTY MIDCAP 100",
+    "last_price": 0.0,
+    "expiry": "",
+    "strike": 0.0,
+    "tick_size": 0.0,
+    "lot_size": 0,
+    "instrument_type": "EQ",
+    "segment": "INDICES",
+    "exchange": "NSE"
+  },
+  {
+    "instrument_token": 260105,
+    "exchange_token": "1016",
+    "tradingsymbol": "NIFTY BANK",
+    "name": "NIFTY BANK",
+    "last_price": 0.0,
+    "expiry": "",
+    "strike": 0.0,
+    "tick_size": 0.0,
+    "lot_size": 0,
+    "instrument_type": "EQ",
+    "segment": "INDICES",
+    "exchange": "NSE"
+  },
+  {
+    "instrument_token": 260617,
+    "exchange_token": "1018",
+    "tradingsymbol": "NIFTY 100",
+    "name": "NIFTY 100",
+    "last_price": 0.0,
+    "expiry": "",
+    "strike": 0.0,
+    "tick_size": 0.0,
+    "lot_size": 0,
+    "instrument_type": "EQ",
+    "segment": "INDICES",
+    "exchange": "NSE"
+  },
+  {
+    "instrument_token": 257033,
+    "exchange_token": "1004",
+    "tradingsymbol": "NIFTY DIV OPPS 50",
+    "name": "NIFTY DIV OPPS 50",
+    "last_price": 0.0,
+    "expiry": "",
+    "strike": 0.0,
+    "tick_size": 0.0,
+    "lot_size": 0,
+    "instrument_type": "EQ",
+    "segment": "INDICES",
+    "exchange": "NSE"
+  }
+]
+
+instrument_token for NSE:INFY: 408065
+
+======================================================================
+2. QUOTE — GET /quote for ['NSE:INFY', 'NSE:RELIANCE', 'NSE:NIFTY 50']
+
+======================================================================
+{
+  "NSE:INFY": {
+    "instrument_token": 408065,
+    "timestamp": "2026-07-03 12:57:21",
+    "last_trade_time": "2026-07-03 12:57:21",
+    "last_price": 1051.9,
+    "last_quantity": 4,
+    "buy_quantity": 481198,
+    "sell_quantity": 1038419,
+    "volume": 8508384,
+    "average_price": 1052.83,
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "net_change": 0,
+    "lower_circuit_limit": 936.9,
+    "upper_circuit_limit": 1144.9,
+    "ohlc": {
+      "open": 1063,
+      "high": 1068.7,
+      "low": 1042,
+      "close": 1040.9
+    },
+    "depth": {
+      "buy": [
+        {
+          "price": 1051.9,
+          "quantity": 241,
+          "orders": 13
+        },
+        {
+          "price": 1051.8,
+          "quantity": 415,
+          "orders": 6
+        },
+        {
+          "price": 1051.7,
+          "quantity": 741,
+          "orders": 11
+        },
+        {
+          "price": 1051.6,
+          "quantity": 816,
+          "orders": 9
+        },
+        {
+          "price": 1051.5,
+          "quantity": 786,
+          "orders": 8
+        }
+      ],
+      "sell": [
+        {
+          "price": 1052.1,
+          "quantity": 67,
+          "orders": 2
+        },
+        {
+          "price": 1052.3,
+          "quantity": 640,
+          "orders": 4
+        },
+        {
+          "price": 1052.4,
+          "quantity": 1148,
+          "orders": 8
+        },
+        {
+          "price": 1052.5,
+          "quantity": 2286,
+          "orders": 14
+        },
+        {
+          "price": 1052.6,
+          "quantity": 1179,
+          "orders": 13
+        }
+      ]
+    }
+  },
+  "NSE:NIFTY 50": {
+    "instrument_token": 256265,
+    "tradingsymbol": "NIFTY 50",
+    "timestamp": "2026-07-03 12:57:21",
+    "last_price": 24357.6,
+    "net_change": 181.9,
+    "ohlc": {
+      "open": 24375.65,
+      "high": 24378.15,
+      "low": 24295.15,
+      "close": 24175.7
+    }
+  },
+  "NSE:RELIANCE": {
+    "instrument_token": 738561,
+    "timestamp": "2026-07-03 12:57:20",
+    "last_trade_time": "2026-07-03 12:57:17",
+    "last_price": 1304.1,
+    "last_quantity": 1,
+    "buy_quantity": 835650,
+    "sell_quantity": 1038824,
+    "volume": 4769930,
+    "average_price": 1305.62,
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "net_change": 0,
+    "lower_circuit_limit": 1173.2,
+    "upper_circuit_limit": 1433.8,
+    "ohlc": {
+      "open": 1312,
+      "high": 1312,
+      "low": 1302,
+      "close": 1303.5
+    },
+    "depth": {
+      "buy": [
+        {
+          "price": 1304,
+          "quantity": 13230,
+          "orders": 68
+        },
+        {
+          "price": 1303.9,
+          "quantity": 110,
+          "orders": 3
+        },
+        {
+          "price": 1303.8,
+          "quantity": 545,
+          "orders": 8
+        },
+        {
+          "price": 1303.7,
+          "quantity": 2704,
+          "orders": 12
+        },
+        {
+          "price": 1303.6,
+          "quantity": 1706,
+          "orders": 14
+        }
+      ],
+      "sell": [
+        {
+          "price": 1304.1,
+          "quantity": 346,
+          "orders": 1
+        },
+        {
+          "price": 1304.3,
+          "quantity": 1,
+          "orders": 1
+        },
+        {
+          "price": 1304.4,
+          "quantity": 151,
+          "orders": 2
+        },
+        {
+          "price": 1304.5,
+          "quantity": 748,
+          "orders": 8
+        },
+        {
+          "price": 1304.6,
+          "quantity": 1207,
+          "orders": 13
+        }
+      ]
+    }
+  }
+}
+
+======================================================================
+3. OHLC — GET /quote/ohlc for ['NSE:INFY', 'NSE:RELIANCE', 'NSE:NIFTY 50']
+
+======================================================================
+{
+  "NSE:INFY": {
+    "instrument_token": 408065,
+    "last_price": 1051.9,
+    "ohlc": {
+      "open": 1063,
+      "high": 1068.7,
+      "low": 1042,
+      "close": 1040.9
+    }
+  },
+  "NSE:NIFTY 50": {
+    "instrument_token": 256265,
+    "last_price": 24357.6,
+    "ohlc": {
+      "open": 24375.65,
+      "high": 24378.15,
+      "low": 24295.15,
+      "close": 24175.7
+    }
+  },
+  "NSE:RELIANCE": {
+    "instrument_token": 738561,
+    "last_price": 1304.1,
+    "ohlc": {
+      "open": 1312,
+      "high": 1312,
+      "low": 1302,
+      "close": 1303.5
+    }
+  }
+}
+
+======================================================================
+4. LTP — GET /quote/ltp for ['NSE:INFY', 'NSE:RELIANCE', 'NSE:NIFTY 50']
+
+======================================================================
+{
+  "NSE:INFY": {
+    "instrument_token": 408065,
+    "last_price": 1051.9
+  },
+  "NSE:NIFTY 50": {
+    "instrument_token": 256265,
+    "last_price": 24357.6
+  },
+  "NSE:RELIANCE": {
+    "instrument_token": 738561,
+    "last_price": 1304
+  }
+}
+
+======================================================================
+5. HISTORICAL — last 5 trading days of NSE:INFY, day candles
+
+======================================================================
+[
+  {
+    "date": "2026-06-29 00:00:00+05:30",
+    "open": 1037.1,
+    "high": 1046.6,
+    "low": 1029.1,
+    "close": 1036.7,
+    "volume": 15080892
+  },
+  {
+    "date": "2026-06-30 00:00:00+05:30",
+    "open": 1030,
+    "high": 1030.4,
+    "low": 996,
+    "close": 1000.4,
+    "volume": 24128263
+  },
+  {
+    "date": "2026-07-01 00:00:00+05:30",
+    "open": 1006,
+    "high": 1014,
+    "low": 982.4,
+    "close": 985.3,
+    "volume": 13037982
+  },
+  {
+    "date": "2026-07-02 00:00:00+05:30",
+    "open": 1006.4,
+    "high": 1045,
+    "low": 1006,
+    "close": 1040.9,
+    "volume": 18741111
+  },
+  {
+    "date": "2026-07-03 00:00:00+05:30",
+    "open": 1063,
+    "high": 1068.7,
+    "low": 1042,
+    "close": 1051.5,
+    "volume": 8361467
+  }
+]
+
+======================================================================
+6. WEBSOCKET — live ticks for NSE:INFY (~15 seconds)
+
+======================================================================
+WebSocket connected. Subscribing (FULL mode)...
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1051.9,
+    "last_traded_quantity": 4,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508384,
+    "total_buy_quantity": 481198,
+    "total_sell_quantity": 1038419,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0567777884523009,
+    "last_trade_time": "2026-07-03 12:57:21",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:21",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 241,
+          "price": 1051.9,
+          "orders": 13
+        },
+        {
+          "quantity": 415,
+          "price": 1051.8,
+          "orders": 6
+        },
+        {
+          "quantity": 741,
+          "price": 1051.7,
+          "orders": 11
+        },
+        {
+          "quantity": 816,
+          "price": 1051.6,
+          "orders": 9
+        },
+        {
+          "quantity": 786,
+          "price": 1051.5,
+          "orders": 8
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 67,
+          "price": 1052.1,
+          "orders": 2
+        },
+        {
+          "quantity": 640,
+          "price": 1052.3,
+          "orders": 4
+        },
+        {
+          "quantity": 1148,
+          "price": 1052.4,
+          "orders": 8
+        },
+        {
+          "quantity": 2286,
+          "price": 1052.5,
+          "orders": 14
+        },
+        {
+          "quantity": 1179,
+          "price": 1052.6,
+          "orders": 13
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1051.9,
+    "last_traded_quantity": 100,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508488,
+    "total_buy_quantity": 480938,
+    "total_sell_quantity": 1038878,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0567777884523009,
+    "last_trade_time": "2026-07-03 12:57:22",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:22",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 121,
+          "price": 1051.9,
+          "orders": 15
+        },
+        {
+          "quantity": 412,
+          "price": 1051.8,
+          "orders": 5
+        },
+        {
+          "quantity": 740,
+          "price": 1051.7,
+          "orders": 10
+        },
+        {
+          "quantity": 591,
+          "price": 1051.6,
+          "orders": 8
+        },
+        {
+          "quantity": 786,
+          "price": 1051.5,
+          "orders": 8
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 97,
+          "price": 1052.1,
+          "orders": 3
+        },
+        {
+          "quantity": 640,
+          "price": 1052.3,
+          "orders": 4
+        },
+        {
+          "quantity": 1148,
+          "price": 1052.4,
+          "orders": 8
+        },
+        {
+          "quantity": 2286,
+          "price": 1052.5,
+          "orders": 14
+        },
+        {
+          "quantity": 1370,
+          "price": 1052.6,
+          "orders": 13
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 5,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508666,
+    "total_buy_quantity": 475433,
+    "total_sell_quantity": 1041712,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:23",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:23",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 165,
+          "price": 1051.9,
+          "orders": 17
+        },
+        {
+          "quantity": 134,
+          "price": 1051.7,
+          "orders": 2
+        },
+        {
+          "quantity": 291,
+          "price": 1051.6,
+          "orders": 3
+        },
+        {
+          "quantity": 651,
+          "price": 1051.5,
+          "orders": 5
+        },
+        {
+          "quantity": 985,
+          "price": 1051.4,
+          "orders": 13
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 627,
+          "price": 1052.0,
+          "orders": 2
+        },
+        {
+          "quantity": 212,
+          "price": 1052.1,
+          "orders": 4
+        },
+        {
+          "quantity": 211,
+          "price": 1052.2,
+          "orders": 2
+        },
+        {
+          "quantity": 1036,
+          "price": 1052.3,
+          "orders": 8
+        },
+        {
+          "quantity": 1777,
+          "price": 1052.4,
+          "orders": 14
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 5,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508666,
+    "total_buy_quantity": 475433,
+    "total_sell_quantity": 1041712,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:23",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:23",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 165,
+          "price": 1051.9,
+          "orders": 17
+        },
+        {
+          "quantity": 134,
+          "price": 1051.7,
+          "orders": 2
+        },
+        {
+          "quantity": 291,
+          "price": 1051.6,
+          "orders": 3
+        },
+        {
+          "quantity": 651,
+          "price": 1051.5,
+          "orders": 5
+        },
+        {
+          "quantity": 985,
+          "price": 1051.4,
+          "orders": 13
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 627,
+          "price": 1052.0,
+          "orders": 2
+        },
+        {
+          "quantity": 212,
+          "price": 1052.1,
+          "orders": 4
+        },
+        {
+          "quantity": 211,
+          "price": 1052.2,
+          "orders": 2
+        },
+        {
+          "quantity": 1036,
+          "price": 1052.3,
+          "orders": 8
+        },
+        {
+          "quantity": 1777,
+          "price": 1052.4,
+          "orders": 14
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 141,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508807,
+    "total_buy_quantity": 476228,
+    "total_sell_quantity": 1041218,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:24",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:24",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 167,
+          "price": 1051.9,
+          "orders": 18
+        },
+        {
+          "quantity": 134,
+          "price": 1051.7,
+          "orders": 2
+        },
+        {
+          "quantity": 291,
+          "price": 1051.6,
+          "orders": 3
+        },
+        {
+          "quantity": 837,
+          "price": 1051.5,
+          "orders": 6
+        },
+        {
+          "quantity": 980,
+          "price": 1051.4,
+          "orders": 12
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 566,
+          "price": 1052.0,
+          "orders": 3
+        },
+        {
+          "quantity": 57,
+          "price": 1052.1,
+          "orders": 1
+        },
+        {
+          "quantity": 186,
+          "price": 1052.2,
+          "orders": 1
+        },
+        {
+          "quantity": 1036,
+          "price": 1052.3,
+          "orders": 8
+        },
+        {
+          "quantity": 1745,
+          "price": 1052.4,
+          "orders": 13
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 50,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508858,
+    "total_buy_quantity": 476380,
+    "total_sell_quantity": 1041378,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:25",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:25",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 168,
+          "price": 1051.9,
+          "orders": 18
+        },
+        {
+          "quantity": 2007,
+          "price": 1051.8,
+          "orders": 3
+        },
+        {
+          "quantity": 134,
+          "price": 1051.7,
+          "orders": 2
+        },
+        {
+          "quantity": 533,
+          "price": 1051.6,
+          "orders": 4
+        },
+        {
+          "quantity": 614,
+          "price": 1051.5,
+          "orders": 6
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 587,
+          "price": 1052.0,
+          "orders": 5
+        },
+        {
+          "quantity": 57,
+          "price": 1052.1,
+          "orders": 1
+        },
+        {
+          "quantity": 186,
+          "price": 1052.2,
+          "orders": 1
+        },
+        {
+          "quantity": 1036,
+          "price": 1052.3,
+          "orders": 8
+        },
+        {
+          "quantity": 1352,
+          "price": 1052.4,
+          "orders": 11
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 50,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508858,
+    "total_buy_quantity": 476380,
+    "total_sell_quantity": 1041378,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:25",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:25",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 168,
+          "price": 1051.9,
+          "orders": 18
+        },
+        {
+          "quantity": 2007,
+          "price": 1051.8,
+          "orders": 3
+        },
+        {
+          "quantity": 134,
+          "price": 1051.7,
+          "orders": 2
+        },
+        {
+          "quantity": 533,
+          "price": 1051.6,
+          "orders": 4
+        },
+        {
+          "quantity": 614,
+          "price": 1051.5,
+          "orders": 6
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 587,
+          "price": 1052.0,
+          "orders": 5
+        },
+        {
+          "quantity": 57,
+          "price": 1052.1,
+          "orders": 1
+        },
+        {
+          "quantity": 186,
+          "price": 1052.2,
+          "orders": 1
+        },
+        {
+          "quantity": 1036,
+          "price": 1052.3,
+          "orders": 8
+        },
+        {
+          "quantity": 1352,
+          "price": 1052.4,
+          "orders": 11
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 7,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508903,
+    "total_buy_quantity": 480147,
+    "total_sell_quantity": 1040624,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:25",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:26",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 260,
+          "price": 1051.9,
+          "orders": 20
+        },
+        {
+          "quantity": 2160,
+          "price": 1051.8,
+          "orders": 6
+        },
+        {
+          "quantity": 382,
+          "price": 1051.7,
+          "orders": 5
+        },
+        {
+          "quantity": 865,
+          "price": 1051.6,
+          "orders": 7
+        },
+        {
+          "quantity": 650,
+          "price": 1051.5,
+          "orders": 8
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 505,
+          "price": 1052.0,
+          "orders": 3
+        },
+        {
+          "quantity": 640,
+          "price": 1052.3,
+          "orders": 4
+        },
+        {
+          "quantity": 1366,
+          "price": 1052.4,
+          "orders": 11
+        },
+        {
+          "quantity": 2393,
+          "price": 1052.5,
+          "orders": 17
+        },
+        {
+          "quantity": 1151,
+          "price": 1052.6,
+          "orders": 12
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 26,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508938,
+    "total_buy_quantity": 480454,
+    "total_sell_quantity": 1040577,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:27",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:27",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 377,
+          "price": 1051.9,
+          "orders": 22
+        },
+        {
+          "quantity": 2377,
+          "price": 1051.8,
+          "orders": 8
+        },
+        {
+          "quantity": 377,
+          "price": 1051.7,
+          "orders": 4
+        },
+        {
+          "quantity": 623,
+          "price": 1051.6,
+          "orders": 6
+        },
+        {
+          "quantity": 1060,
+          "price": 1051.5,
+          "orders": 10
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 470,
+          "price": 1052.0,
+          "orders": 3
+        },
+        {
+          "quantity": 640,
+          "price": 1052.3,
+          "orders": 4
+        },
+        {
+          "quantity": 1366,
+          "price": 1052.4,
+          "orders": 11
+        },
+        {
+          "quantity": 2203,
+          "price": 1052.5,
+          "orders": 16
+        },
+        {
+          "quantity": 1151,
+          "price": 1052.6,
+          "orders": 12
+        }
+      ]
+    }
+  }
+]
+[
+  {
+    "tradable": true,
+    "mode": "full",
+    "instrument_token": 408065,
+    "last_price": 1052.0,
+    "last_traded_quantity": 26,
+    "average_traded_price": 1052.83,
+    "volume_traded": 8508938,
+    "total_buy_quantity": 480454,
+    "total_sell_quantity": 1040577,
+    "ohlc": {
+      "open": 1063.0,
+      "high": 1068.7,
+      "low": 1042.0,
+      "close": 1040.9
+    },
+    "change": 1.0663848592564038,
+    "last_trade_time": "2026-07-03 12:57:27",
+    "oi": 0,
+    "oi_day_high": 0,
+    "oi_day_low": 0,
+    "exchange_timestamp": "2026-07-03 12:57:27",
+    "depth": {
+      "buy": [
+        {
+          "quantity": 377,
+          "price": 1051.9,
+          "orders": 22
+        },
+        {
+          "quantity": 2377,
+          "price": 1051.8,
+          "orders": 8
+        },
+        {
+          "quantity": 377,
+          "price": 1051.7,
+          "orders": 4
+        },
+        {
+          "quantity": 623,
+          "price": 1051.6,
+          "orders": 6
+        },
+        {
+          "quantity": 1060,
+          "price": 1051.5,
+          "orders": 10
+        }
+      ],
+      "sell": [
+        {
+          "quantity": 470,
+          "price": 1052.0,
+          "orders": 3
+        },
+        {
+          "quantity": 640,
+          "price": 1052.3,
+          "orders": 4
+        },
+        {
+          "quantity": 1366,
+          "price": 1052.4,
+          "orders": 11
+        },
+        {
+          "quantity": 2203,
+          "price": 1052.5,
+          "orders": 16
+        },
+        {
+          "quantity": 1151,
+          "price": 1052.6,
+          "orders": 12
+        }
+      ]
+    }
+  }
+]
+
+======================================================================
+Done. All six endpoints exercised.
