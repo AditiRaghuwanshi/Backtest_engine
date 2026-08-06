@@ -25,8 +25,8 @@ import datetime
 from kiteconnect import KiteConnect
 
 # ---------------------------------------------------------------
-API_KEY = "i983oh68z8684vb8"
-API_SECRET = "9t1cgzeugbc9c61ros12rgt2vb0crvzh"
+API_KEY = "a15j52i4kghy9scw"
+API_SECRET = "0zk0fa3v6r13k6eu7g88tu5iig38loqm"
 # ---------------------------------------------------------------
 
 SESSION_FILE = "kite_session.json"
