@@ -1,5 +1,5 @@
 """
-PORTFOLIO BACKTEST ENGINE
+PORTFOLIO BACKTEST engineINE
 =========================
 
 Nothing about the strategy is hardcoded. Everything comes from CONFIG.
@@ -28,13 +28,14 @@ You cannot trade at a price you only learn about after the market shuts.
 RUN IT
 ------
     source venv/bin/activate
-    python portfolio_engine.py
+    python portfolio_engineine.py
 """
 
 import os
 import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine
+from db import db as engine
 
 # ======================================================================
 # CONFIG  --  every one of these becomes a field in the web form
@@ -66,8 +67,7 @@ CONFIG = {
     "cost_bps":           15,          # per side: brokerage + STT + slippage
 }
 
-PASSWORD = os.getenv("PGPASSWORD", "Aditi1804!!")
-DB = f"postgresql+psycopg2://postgres:{PASSWORD}@localhost:5432/backtest"
+
 
 
 # ======================================================================
@@ -80,11 +80,11 @@ def load_matrices(cfg):
     suspended, etc). That is how "this company did not exist in 2018"
     is handled -- it is simply NaN, and NaN never gets selected.
     """
-    eng = create_engine(DB)
+   
     df = pd.read_sql(
         "SELECT symbol, d, open, high, low, close, volume "
         "FROM bar_daily WHERE d BETWEEN %(s)s AND %(e)s",
-        eng, params={"s": cfg["start"], "e": cfg["end"]},
+        engine, params={"s": cfg["start"], "e": cfg["end"]},
     )
     for c in ["open", "high", "low", "close", "volume"]:
         df[c] = df[c].astype(float)
@@ -151,12 +151,17 @@ def choose_portfolio(scores, held, cfg):
 
 
 # ======================================================================
-# 4. THE ENGINE
+# 4. THE engineINE
 # ======================================================================
 def run(cfg):
     M      = load_matrices(cfg)
     dates  = list(M["close"].index)
     rebals = rebalance_dates(dates, cfg["rebalance"])
+
+    def price(series, sym):                      # <- ye teen line jodo
+        v = series.get(sym, 0.0)
+        return 0.0 if pd.isna(v) else float(v)
+
 
     cash      = float(cfg["capital"])
     positions = {}            # symbol -> {"shares": int, "entry": float}
@@ -261,7 +266,7 @@ def run(cfg):
                           {o["symbol"] for o in pending}]
                 target = choose_portfolio(scores, held, cfg)
 
-                nav    = cash + sum(p["shares"] * close.get(s, 0)
+                nav    = cash + sum(p["shares"] * price(close, 0)
                                     for s, p in positions.items())
                 weight = min(1.0 / max(len(target), 1), cfg["max_weight"])
 
@@ -275,7 +280,7 @@ def run(cfg):
                 # size what is wanted
                 for sym in target:
                     px = close.get(sym, np.nan)
-                    if np.isnan(px):
+                    if pd.isna(px) or px <= 0:
                         continue
                     want = int((nav * weight) // px)
                     have = positions.get(sym, {}).get("shares", 0)
@@ -291,7 +296,7 @@ def run(cfg):
         # ------------------------------------------------------------------
         # STEP 4  mark to market, record today's NAV
         # ------------------------------------------------------------------
-        mtm = sum(p["shares"] * close.get(s, 0) for s, p in positions.items())
+        mtm = sum(p["shares"] * price(close, 0) for s, p in positions.items())
         nav_rows.append({"date": day, "cash": cash, "mtm": mtm,
                          "nav": cash + mtm, "positions": len(positions)})
 
