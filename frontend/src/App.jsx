@@ -3,7 +3,7 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
 } from "recharts";
 
-const API = "http://localhost:8000";
+const API = "https://backtestengine-production-f2f7.up.railway.app";
 
 const DEFAULTS = {
   start: "2018-07-05",
