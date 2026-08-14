@@ -83,8 +83,15 @@ def load_matrices(cfg):
    
     df = pd.read_sql(
         "SELECT symbol, d, open, high, low, close, volume "
-        "FROM bar_daily WHERE d BETWEEN %(s)s AND %(e)s",
-        engine, params={"s": cfg["start"], "e": cfg["end"]},
+        "FROM bar_daily WHERE d BETWEEN %(s)s AND %(e)s "
+        "AND symbol IN ("
+        "  SELECT symbol FROM bar_daily "
+        "  WHERE d BETWEEN %(s)s AND %(e)s "
+        "  GROUP BY symbol ORDER BY AVG(close * volume) DESC "
+        "  LIMIT %(n)s)",
+        engine,
+        params={"s": cfg["start"], "e": cfg["end"],
+                "n": int(cfg["universe_size"]) * 4},
     )
     for c in ["open", "high", "low", "close", "volume"]:
         df[c] = df[c].astype(float)
@@ -266,7 +273,7 @@ def run(cfg):
                           {o["symbol"] for o in pending}]
                 target = choose_portfolio(scores, held, cfg)
 
-                nav    = cash + sum(p["shares"] * price(close, 0)
+                nav    = cash + sum(p["shares"] * price(close, s)
                                     for s, p in positions.items())
                 weight = min(1.0 / max(len(target), 1), cfg["max_weight"])
 
@@ -296,7 +303,7 @@ def run(cfg):
         # ------------------------------------------------------------------
         # STEP 4  mark to market, record today's NAV
         # ------------------------------------------------------------------
-        mtm = sum(p["shares"] * price(close, 0) for s, p in positions.items())
+        mtm = sum(p["shares"] * price(close, s) for s, p in positions.items())
         nav_rows.append({"date": day, "cash": cash, "mtm": mtm,
                          "nav": cash + mtm, "positions": len(positions)})
 
