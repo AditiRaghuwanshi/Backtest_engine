@@ -14,8 +14,7 @@ app = FastAPI()
 
 # ----------------------------------------------------------------------
 # CORS  --  Railway ke ALLOWED_ORIGINS variable se aata hai
-# ----------------------------------------------------------------------
-ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
+
 
 app.add_middleware(
     CORSMiddleware,
