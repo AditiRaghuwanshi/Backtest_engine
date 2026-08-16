@@ -2,8 +2,11 @@
 RUN STORAGE
 ===========
 
-Pehle runs = {} memory mein tha. Server restart = sab gaya.
-Ab disk pe jaata hai.
+Runs disk pe rakhe jaate hain, memory mein nahi.
+
+Kyun? Kyunki backtest ab ALAG PROCESS mein chalta hai. Alag process
+aapki Python dictionary tak nahi pahunch sakta -- par file dono
+padh-likh sakte hain.
 
     runs/
       c3355cce.json          <- status, config, summary

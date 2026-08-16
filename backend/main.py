@@ -1,9 +1,10 @@
 import os
 import uuid
+from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime
 
 import pandas as pd
-from fastapi import FastAPI, BackgroundTasks, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -13,9 +14,9 @@ from db import db
 app = FastAPI()
 
 # ----------------------------------------------------------------------
-# CORS  --  Railway ke ALLOWED_ORIGINS variable se aata hai
+# CORS
+# ----------------------------------------------------------------------
 ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,6 +24,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ----------------------------------------------------------------------
+# WORKER POOL
+#
+# Yahi asli fix hai. Backtest ALAG process mein chalta hai.
+# Web process khaali rehta hai aur requests ka jawab deta rehta hai,
+# isliye Railway usko mara hua nahi samajhta.
+#
+# max_workers=1 -- ek waqt mein ek hi backtest. RAM bachti hai.
+# ----------------------------------------------------------------------
+pool = ProcessPoolExecutor(max_workers=1)
 
 
 # ----------------------------------------------------------------------
@@ -45,16 +57,45 @@ class Config(BaseModel):
 
 
 # ----------------------------------------------------------------------
-# 1. HEALTH
+# YE FUNCTION ALAG PROCESS MEIN CHALTA HAI
+#
+# Isliye ye module ke top level pe hona chahiye (andar nested nahi),
+# warna Python isko doosre process ko bhej nahi paata.
+# ----------------------------------------------------------------------
+def _worker(run_id: str, cfg: dict):
+    from portfolio_engine import run, summarise
+
+    meta = storage.load_meta(run_id) or {"run_id": run_id, "config": cfg}
+    meta["status"] = "running"
+    storage.save_meta(run_id, meta)
+
+    try:
+        trades, nav = run(cfg)
+        summary = summarise(nav, trades, cfg)
+        summary = {k: (None if pd.isna(v) else float(v))
+                   for k, v in summary.items()}
+
+        storage.save_frames(run_id, trades, nav)
+
+        meta["result"] = summary
+        meta["trades"] = len(trades)
+        meta["status"] = "done"
+    except Exception as e:
+        meta["status"] = "failed"
+        meta["error"] = f"{type(e).__name__}: {e}"
+
+    meta["finished_at"] = datetime.now().isoformat()
+    storage.save_meta(run_id, meta)
+
+
+# ----------------------------------------------------------------------
+# ENDPOINTS
 # ----------------------------------------------------------------------
 @app.get("/health")
 def health():
     return {"status": "ok"}
 
 
-# ----------------------------------------------------------------------
-# 2. COMPANIES
-# ----------------------------------------------------------------------
 @app.get("/companies")
 def get_companies():
     df = pd.read_sql("SELECT DISTINCT symbol FROM bar_daily ORDER BY symbol", db)
@@ -73,38 +114,8 @@ def get_company(symbol: str, limit: int = 10):
     return {"symbol": symbol.upper(), "rows": df.to_dict("records")}
 
 
-# ----------------------------------------------------------------------
-# 3. BACKTEST  --  peeche chalta hai, disk pe save hota hai
-# ----------------------------------------------------------------------
-def do_backtest(run_id: str):
-    meta = storage.load_meta(run_id)
-    meta["status"] = "running"
-    storage.save_meta(run_id, meta)
-
-    try:
-        from portfolio_engine import run, summarise
-
-        cfg = meta["config"]
-        trades, nav = run(cfg)
-        summary = summarise(nav, trades, cfg)
-        summary = {k: (None if pd.isna(v) else float(v))
-                   for k, v in summary.items()}
-
-        storage.save_frames(run_id, trades, nav)
-
-        meta["result"] = summary
-        meta["trades"] = len(trades)
-        meta["status"] = "done"
-    except Exception as e:
-        meta["status"] = "failed"
-        meta["error"] = str(e)
-
-    meta["finished_at"] = datetime.now().isoformat()
-    storage.save_meta(run_id, meta)
-
-
 @app.post("/runs")
-def start_run(cfg: Config, background: BackgroundTasks):
+def start_run(cfg: Config):
     run_id = str(uuid.uuid4())[:8]
 
     storage.save_meta(run_id, {
@@ -114,7 +125,9 @@ def start_run(cfg: Config, background: BackgroundTasks):
         "started_at": datetime.now().isoformat(),
     })
 
-    background.add_task(do_backtest, run_id)
+    # alag process ko kaam de do -- yahan wait nahi karte
+    pool.submit(_worker, run_id, cfg.model_dump())
+
     return {"run_id": run_id, "status": "queued"}
 
 
@@ -131,9 +144,6 @@ def get_run(run_id: str):
     return meta
 
 
-# ----------------------------------------------------------------------
-# 4. RESULT KE HISSE
-# ----------------------------------------------------------------------
 @app.get("/runs/{run_id}/nav")
 def run_nav(run_id: str):
     df = storage.load_nav(run_id)
